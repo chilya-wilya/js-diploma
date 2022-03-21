@@ -25,9 +25,41 @@ const onStartApp = async () => {
     if(actualPins) {
         createPin(actualPins); 
     } else {
-        saveToStorage(pins);
         createPin(pins); 
+        saveToStorage(pins);
     }
+
+
+    function arrayRemove(arr, value) { 
+        return arr.filter(function(ele){ 
+            return ele.id !== value.id; 
+        });
+    }
+
+    actualPins.forEach(pin => {
+        const pinReportButton = document.getElementById(`${pin.id}_pin-report-button`);
+
+        pinReportButton.addEventListener('click', () => {
+            let deletePinId = pinReportButton.id.split('_')[0];
+            const pinToDelete = document.getElementById(`pin__${pin.id}`).parentElement;
+
+            // console.log(pinToDelete);
+            // console.log(deletePinId);
+            
+            for(let i = 0; i < pins.length; i++) {
+                if (actualPins[i].id === deletePinId) {
+                    actualPins = arrayRemove(actualPins, pin);
+                    // console.log(pins[i].id); //get an object to be removed
+                    pinToDelete.parentElement.removeChild(pinToDelete);
+                    saveToStorage(actualPins);  //save new arr to local storage
+                    break;
+                }
+            }
+            console.log(actualPins)
+        })
+    });
+
+    
 
 }
 

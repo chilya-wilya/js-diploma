@@ -61,6 +61,7 @@ export const createPin = (pins) => {
 
         new_pin.innerHTML = 
         `<div class="pin__hashtag">${pin.hashtag}</div>
+        <div id="pin__${pin.id}" class="pin__id"></div>
         <div class="pin__modal">
             <div class="modal_header">
                 <div id="${pin.id}_pin-menu-button" class="modal_menu">
@@ -123,19 +124,19 @@ export const createPin = (pins) => {
         
         //create pin modal menu window
 
-        const pinImage =  new_pin.children[2].children[0];
+        const pinImage =  new_pin.children[3].children[0];
 
-        const pinMenuButton = new_pin.children[1].children[0].children[0];
+        const pinMenuButton = new_pin.children[2].children[0].children[0];
 
-        const pinMenuArea = new_pin.children[1].children[2];
-        const pinMenu = new_pin.children[1].children[2].children[0];
+        const pinMenuArea = new_pin.children[2].children[2];
+        const pinMenu = new_pin.children[2].children[2].children[0];
 
-        const pinReportButton = new_pin.children[1].children[2].children[0].children[1].children[0];
+        const pinReportButton = new_pin.children[2].children[2].children[0].children[1].children[0];
 
-        const pinReportArea = new_pin.children[1].children[2].children[1];
-        const pinReportMenu = new_pin.children[1].children[2].children[1].children[0];
+        const pinReportArea = new_pin.children[2].children[2].children[1];
+        const pinReportMenu = new_pin.children[2].children[2].children[1].children[0];
 
-        const pinModalArea = new_pin.children[1];
+        const pinModalArea = new_pin.children[2];
 
         pinMenuButton.addEventListener('click', () => {
             pinMenuArea.style.opacity = '1';
@@ -173,37 +174,6 @@ export const createPin = (pins) => {
         pinImage.classList.add('pin_max_height');
 
 
-        //removal pins from dashboard and addition pins to boards
-
-        const pinReportButtons = document.querySelectorAll(".pin-report");
-
-  //      console.log(pinReportButtons)
-
-        pinReportButtons.forEach(el => {
-            el.addEventListener('click', () => {
-                let pins = getPinsFromStorage();
-                let deletePinId = el.id.split('_')[0];
-                
-                for(let i = 0; i < pins.length; i++) {
-                    if (pins[i].id === deletePinId) {
-                        pins = arrayRemove(pins, pin)
-                     //   saveToStorage(pins);
-                        break;
-                    }
-                }
-
-      //          console.log(pins)
-                
-                // pins.forEach(pin => {
-                //     //console.log(+pin.id);
-                //     //console.log(deletePinId)
-                    
-                // })
-                //console.log(pins)
-            })
-        })
-
-
 
         //append pin to dashboard
 
@@ -230,6 +200,66 @@ function arrayRemove(arr, value) {
     });
 }
 
+
+
+
+ //removal pins from dashboard and addition pins to boards
+
+// let actualPins = getPinsFromStorage();
+
+// actualPins.forEach(pin => {
+//     const pinReportButton = document.getElementsByClassName(".pin-report");
+
+//     pinReportButton.addEventListener('click', () => {
+//         // let pins = getPinsFromStorage();
+//         let deletePinId = pinReportButton.id.split('_')[0];
+        
+//         for(let i = 0; i < pins.length; i++) {
+//             if (actualPins[i].id === deletePinId) {
+//                 actualPins = arrayRemove(actualPins, pin);
+//                 //   saveToStorage(pins);
+//                 break;
+//             }
+//         }
+
+//         console.log(actualPins)
+        
+//         actualPins.forEach(pin => {
+//             console.log(+pin.id);
+//             console.log(deletePinId);
+            
+//         })
+//         console.log(actualPins)
+//     })
+// });
+
+        // const pinReportButtons = document.querySelectorAll(".pin-report");
+
+        // console.log(pinReportButtons)
+
+        // pinReportButtons.forEach(el => {
+        //     el.addEventListener('click', () => {
+        //         let pins = getPinsFromStorage();
+        //         let deletePinId = el.id.split('_')[0];
+                
+        //         for(let i = 0; i < pins.length; i++) {
+        //             if (pins[i].id === deletePinId) {
+        //                 pins = arrayRemove(pins, pin)
+        //              //   saveToStorage(pins);
+        //                 break;
+        //             }
+        //         }
+
+        //        console.log(pins)
+                
+        //         pins.forEach(pin => {
+        //             console.log(+pin.id);
+        //             console.log(deletePinId)
+                    
+        //         })
+        //         console.log(pins)
+        //     })
+        // })
 
 
 // djfkd bdb
