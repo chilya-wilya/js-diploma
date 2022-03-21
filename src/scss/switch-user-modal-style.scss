@@ -1,0 +1,74 @@
+#switch-user-area {
+    width: 430px;
+    height: 480px;
+    position: absolute;
+    top: 85px;
+    right: 45px;
+    pointer-events: none;
+    opacity: 0;
+    transition-duration: 0.4s;
+    z-index: 8;
+
+    .switch-user-modal {
+    width: 380px;
+    height: 450px;
+    border-radius: 16px;
+    background-color: white;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    top: 43%;
+    left: 57%;
+    transform: translate(-53%, -46%);
+    padding: 20px 30px;
+    z-index: 9;
+
+        &__user-wrapper {
+            display: flex;
+            gap: 45px;
+            margin-bottom: 10px;
+        }
+
+        &__avatar {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background-image: url("https://avatarfiles.alphacoders.com/221/thumb-1920-221201.jpg");
+            background-repeat: no-repeat;
+            background-size: contain;
+        }
+
+        &__user-info {
+            h3 {
+                font-size: 16px;
+                // margin-bottom: 10px;
+            }
+            p {
+                font-size: 14px;
+                color: gray;
+            }
+        }
+
+        &__menu {
+            font-size: 14px;
+            margin: 10px 0;
+        }
+
+        &__menu-button button {
+            width: 100%;
+            height: 30px;
+            border-radius: 16px;
+            text-align: left;
+            padding: 3px 10px;
+            font-size: 16px;
+            font-weight: 700;
+            border: none;
+            background-color: transparent;
+            cursor: pointer;
+        }
+
+        &__menu-button button:hover {
+            background-color: rgba($color: #dfdfdf, $alpha: 1.0);
+        }
+    }
+}

@@ -4,12 +4,125 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./scss/style.scss">
+    <link rel="stylesheet" href="./scss/normalize.scss">
+    <link rel="stylesheet" href="./scss/main-style.scss">
+    <link rel="stylesheet" href="./scss/pin-style.scss">
+    <link rel="stylesheet" href="./scss/pin-modal-style.scss">
+    <link rel="stylesheet" href="./scss/pin-menu-modal-style.scss">
+    <link rel="stylesheet" href="./scss/switch-user-modal-style.scss">
     <title>JS Diploma</title>
 </head>
 <body>
+    <header class="header">
+        <img src="./assets/icons/logo.png" alt="logo" class="logo">
+        <input type="text" id="pin-search" placeholder="Search by #hashtag..."> 
+        
+        <select name="select-board" id="select-board">
+            <option value="" selected disabled>Select a board</option>
+            <option value="board1">All pins</option>
+            <option value="board1">Board 1</option>
+            <option value="board2">Board 2</option>
+            <option value="board3">Board 3</option>
+        </select>
 
-    <script src="./js/index.js"></script>
+        <img src="./assets/icons/add.png" alt="add-pin" id="add-pin-modal">
+        <img src="./assets/icons/switch-user.svg" alt="switch-user" id="switch-user-button">
+
+        <div id="switch-user-area">
+            <div id="switch-user-window" class="switch-user-modal">  
+                <div class="switch-user-modal__user-wrapper">
+                    <div class="switch-user-modal__avatar"></div>
+                    <div class="switch-user-modal__user-info">
+                        <h3>Hello, Jack!</h3>
+                        <p>jacktompson89@gmail.com</p>
+                    </div>
+                </div>
+                
+                <p class="switch-user-modal__menu">Personal information</p>
+                
+                <div class="switch-user-modal__menu-button">
+                    <button id="switch-user-modal-menu-button">Edit profile</button>
+                </div>
+                <div class="switch-user-modal__menu-button">
+                    <button id="switch-user-modal-menu-button">Your account settings</button>
+                </div>
+            
+                <p class="switch-user-modal__menu">Actions</p>
+            
+                <div class="switch-user-modal__menu-button">
+                    <button id="switch-user-modal-menu-button">Add account</button>
+                </div>
+                <div class="switch-user-modal__menu-button">
+                    <button id="switch-user-modal-menu-button">Switch user</button>
+                </div>
+                <div class="switch-user-modal__menu-button">
+                    <button id="switch-user-modal-menu-button">Log out</button>
+                </div>
+            
+                <p class="switch-user-modal__menu">Support</p>
+            
+                <div class="switch-user-modal__menu-button">
+                    <button id="switch-user-modal-menu-button">Settings</button>
+                </div>
+                <div class="switch-user-modal__menu-button">
+                    <button id="switch-user-modal-menu-button">Get help</button>
+                </div>
+            </div>
+        </div>
+
+    </header>
+
+    <section class="pin-container" id="pin-container">
+
+        <div class="add-pin_modal">
+            <div class="add-pin_container">
+                <div class="side" id="left_side">
+                    <div class="upload_pin">
+                        <label for="upload_pin" id="upload_img_label">
+                            <div class="upload_img_container">
+                                <div id="dotted_border">
+                                    <div class="download_icon_container">
+                                        <img src="./assets/icons/download-arrow.png" alt="upload_pin" class="download_icon">
+                                    </div>
+                                    <div>Click to upload</div>
+                                    <div>Recommendation: Use high-quality .jpg files less than 20MB</div>
+                                </div>
+                            </div>
+                            <input type="file" name="upload_pin" id="upload_pin">
+                        </label>
     
+                        <div class="modals_pin">
+                            <div class="pin_image">
+                                <!-- <img src="" alt="pin_image"> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="side" id="right_side">
+
+                    <div class="pin_info">
+                        <input placeholder="Add a description" type="text" class="new_pin_input" id="pin_description">
+                        <input placeholder="Add a #hashtag" type="text" class="new_pin_input" id="pin_hashtag">
+                    </div>
+
+                    <div class="size_selection">
+                        <div class="select_size">
+                            <select name="pin_size" id="pin_size">
+                                <option value="" disabled selected>Select pin's size</option>
+                                <option value="small">small</option>
+                                <option value="medium">medium</option>
+                                <option value="large">large</option>
+                            </select>
+                            <div class="save_pin">Save</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <script src="./js/index.js" type="module"></script>
 </body>
 </html>

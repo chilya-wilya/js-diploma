@@ -1,0 +1,93 @@
+.pin {
+
+    &__hashtag {
+        width: 0px;
+        height: 0px;
+        opacity: 0;
+    }
+
+    &__image {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        border-radius: 16px;
+        z-index: -1;
+
+        .pin_max_width {
+            max-width: 100%;
+        }
+        
+        .pin_max_height {
+            max-height: 100%;
+        }
+    }
+
+    &__modal {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        background-color: rgba(188, 143, 143, 0.386);
+        opacity: 0;
+        padding: 10px;
+        transition-duration: 0.3s;
+        border-radius: 16px;
+        z-index: 2;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        .modal_header {
+            width: 100%;
+            height: 15%;
+            position: fixed;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            top: 0;
+
+            .modal_menu img {
+                width: 30px;
+                height: 30px;
+                margin-right: 20px;
+                cursor: pointer;
+                transition-duration: 0.3s;
+            }
+
+            .modal_menu img:hover {
+                transform: scale(1.2);
+            }
+        }
+
+        .modal_footer {
+            width: 100%;
+            height: 15%;
+            position: fixed;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            bottom: 0;
+
+            .modal_avatar img {
+                border-radius: 50%;
+                cursor: pointer;
+                width: 45px;
+                height: 45px;
+            }
+
+            .modal_description {
+                overflow: hidden;
+                padding: 15px;       
+                font-size: 18px;
+                font-weight: 700;
+            }
+        }
+    }
+
+    &__modal:hover {
+        opacity: 1;
+    }
+
+}

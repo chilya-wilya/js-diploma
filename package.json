@@ -5,7 +5,8 @@
         "start": "parcel"
     },
     "dependencies": {
-        "parcel": "latest"
+        "parcel": "latest",
+        "prefetch-image": "^1.1.1"
     },
     "devDependencies": {
         "@parcel/transformer-sass": "^2.3.2"

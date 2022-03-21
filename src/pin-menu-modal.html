@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./scss/normalize.scss">
+    <link rel="stylesheet" href="./scss/main-style.scss">
+    <link rel="stylesheet" href="./scss/pin-style.scss">
+    <link rel="stylesheet" href="./scss/pin-modal-style.scss">
+    <link rel="stylesheet" href="./scss/pin-menu-modal-style.scss">
+    <title>pin menu modal</title>
+</head>
+<body>
+
+    <!-- pin -->
+
+    <div class="pin" style="height: 650px; width: 500px">
+        <div class="pin__hashtag">
+        </div>
+    
+        <div class="pin__modal" id="pin-modal-area" style="height: 650px; width: 500px"> 
+    
+            <div class="modal_header">
+                <div class="modal_menu">
+                    <img id="pin-menu-button" src="./assets/icons/ellipse.png" alt="pin-menu">
+                </div>
+            </div>
+    
+            <div class="modal_footer">
+                <div class="modal_avatar">
+                    <img src="#" alt="pin-avatar">
+                </div>
+                <div class="modal_description">
+                    <span>Description</span>
+                </div>
+            </div>
+
+            <div id="pin-menu-area">
+                <div id="pin-menu-container" class="pin-menu__container">
+                    <div class="pin-menu__select-board">
+                        <div class="pin-menu__save-pin">
+                            <button id="save-pin-on-board"></button>
+                            <p>Save to the board</p>
+                        </div>
+        
+                        <select class='pin-menu__selector' name="pin-select-board" id="pin-select-board">
+                            <option value="" selected disabled>Select a board</option>
+                            <option value="pin-board1">Board 1</option>
+                            <option value="pin-board2">Board 2</option>
+                            <option value="pin-board3">Board 3</option>
+                        </select>
+                    </div>
+                    <div class="pin-menu__report">
+                        <button id="pin-menu-report">Report</button>
+                    </div>
+                </div>
+        
+        
+                <div id="pin-menu-report-modal-area" class="pin-menu__report-modal-area">
+                    <div id="pin-menu-report-modal-container" class="pin-menu__report-modal-container">
+                        <div class="pin-menu__report-wrapper">
+                            <button class="pin-report">Hate speech or symbol</button>
+                        </div>
+                        <div class="pin-menu__report-wrapper">
+                            <button class="pin-report">Bullying or harassment</button>
+                        </div>
+                        <div class="pin-menu__report-wrapper">
+                            <button class="pin-report">Sale of illegal goods</button>
+                        </div>
+                        <div class="pin-menu__report-wrapper">
+                            <button class="pin-report">False information</button>
+                        </div>
+                        <div class="pin-menu__report-wrapper">
+                            <button class="pin-report">I just don't like it</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+        </div>
+    
+        <div class="pin__image">
+            <img src="#" alt="pin_image">
+        </div>
+    </div> 
+
+    <!-- pin menu -->
+
+
+
+    <script src="./js/pin-menu.js"></script>
+</body>
+</html>
