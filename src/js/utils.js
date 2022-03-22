@@ -50,6 +50,9 @@ export const createPin = (pins) => {
 
     let pinContainer = document.getElementById('pin-container');
 
+    pinContainer.innerHTML = '';
+    
+
     pins.forEach(pin => {
         let new_pin = document.createElement('div');
         // let pinImage =  pin.img;
@@ -84,11 +87,12 @@ export const createPin = (pins) => {
                             <p>Save to the board</p>
                         </div>
         
-                        <select class='pin-menu__selector' name="pin-select-board" id="pin-select-board">
+                        <select class='pin-menu__selector' name="pin-select-board" id="${pin.id}_pin-select-board">
                             <option value="" selected disabled>Select a board</option>
-                            <option value="pin-board1">Board 1</option>
-                            <option value="pin-board2">Board 2</option>
-                            <option value="pin-board3">Board 3</option>
+                            <option value="default">All pins</option>
+                            <option value="board1">Board 1</option>
+                            <option value="board2">Board 2</option>
+                            <option value="board3">Board 3</option>
                         </select>
                     </div>
                     <div class="pin-menu__report">
@@ -194,74 +198,15 @@ export const getPinsFromStorage = () => {
     return JSON.parse(localStorage.getItem("pins"));
 };
 
-function arrayRemove(arr, value) { 
+
+
+//function to delete obj from array of pins
+
+export function arrayRemove(arr, value) { 
     return arr.filter(function(ele){ 
         return ele.id !== value.id; 
     });
 }
 
-
-
-
- //removal pins from dashboard and addition pins to boards
-
-// let actualPins = getPinsFromStorage();
-
-// actualPins.forEach(pin => {
-//     const pinReportButton = document.getElementsByClassName(".pin-report");
-
-//     pinReportButton.addEventListener('click', () => {
-//         // let pins = getPinsFromStorage();
-//         let deletePinId = pinReportButton.id.split('_')[0];
-        
-//         for(let i = 0; i < pins.length; i++) {
-//             if (actualPins[i].id === deletePinId) {
-//                 actualPins = arrayRemove(actualPins, pin);
-//                 //   saveToStorage(pins);
-//                 break;
-//             }
-//         }
-
-//         console.log(actualPins)
-        
-//         actualPins.forEach(pin => {
-//             console.log(+pin.id);
-//             console.log(deletePinId);
-            
-//         })
-//         console.log(actualPins)
-//     })
-// });
-
-        // const pinReportButtons = document.querySelectorAll(".pin-report");
-
-        // console.log(pinReportButtons)
-
-        // pinReportButtons.forEach(el => {
-        //     el.addEventListener('click', () => {
-        //         let pins = getPinsFromStorage();
-        //         let deletePinId = el.id.split('_')[0];
-                
-        //         for(let i = 0; i < pins.length; i++) {
-        //             if (pins[i].id === deletePinId) {
-        //                 pins = arrayRemove(pins, pin)
-        //              //   saveToStorage(pins);
-        //                 break;
-        //             }
-        //         }
-
-        //        console.log(pins)
-                
-        //         pins.forEach(pin => {
-        //             console.log(+pin.id);
-        //             console.log(deletePinId)
-                    
-        //         })
-        //         console.log(pins)
-        //     })
-        // })
-
-
-// djfkd bdb
 
 
