@@ -15,8 +15,10 @@
 <body>
     <header class="header">
         <img src="./assets/icons/logo.png" alt="logo" class="logo">
-        <input type="text" id="pin-search" placeholder="Search by #hashtag..."> 
-        
+        <div class="header__input">
+            <input type="text" id="pin-search" placeholder="Search by #hashtag..."> 
+            <label for="pin-search">for example: foodporn, #summer, etc.</label>
+        </div>      
         <select name="select-board" id="select-board">
             <option value="default" selected disabled>Select a board</option>
             <option value="default">All pins</option>
@@ -25,7 +27,7 @@
             <option value="board3">Board 3</option>
         </select>
 
-        <img src="./assets/icons/add.png" alt="add-pin" id="add-pin-modal">
+        <img src="./assets/icons/add.png" alt="add-pin" id="add-pin-modal-button">
         <img src="./assets/icons/switch-user.svg" alt="switch-user" id="switch-user-button">
 
         <div id="switch-user-area">
@@ -69,58 +71,9 @@
                 </div>
             </div>
         </div>
-
     </header>
 
     <section class="pin-container" id="pin-container">
-
-        <div class="add-pin_modal">
-            <div class="add-pin_container">
-                <div class="side" id="left_side">
-                    <div class="upload_pin">
-                        <label for="upload_pin" id="upload_img_label">
-                            <div class="upload_img_container">
-                                <div id="dotted_border">
-                                    <div class="download_icon_container">
-                                        <img src="./assets/icons/download-arrow.png" alt="upload_pin" class="download_icon">
-                                    </div>
-                                    <div>Click to upload</div>
-                                    <div>Recommendation: Use high-quality .jpg files less than 20MB</div>
-                                </div>
-                            </div>
-                            <input type="file" name="upload_pin" id="upload_pin">
-                        </label>
-    
-                        <div class="modals_pin">
-                            <div class="pin_image">
-                                <!-- <img src="" alt="pin_image"> -->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-    
-                <div class="side" id="right_side">
-
-                    <div class="pin_info">
-                        <input placeholder="Add a description" type="text" class="new_pin_input" id="pin_description">
-                        <input placeholder="Add a #hashtag" type="text" class="new_pin_input" id="pin_hashtag">
-                    </div>
-
-                    <div class="size_selection">
-                        <div class="select_size">
-                            <select name="pin_size" id="pin_size">
-                                <option value="" disabled selected>Select pin's size</option>
-                                <option value="small">small</option>
-                                <option value="medium">medium</option>
-                                <option value="large">large</option>
-                            </select>
-                            <div class="save_pin">Save</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
     </section>
 
     <script src="./js/index.js" type="module"></script>

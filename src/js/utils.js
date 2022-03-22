@@ -1,25 +1,11 @@
 // reset add new pin modal window
 
 export function resetModal() {
-
-    const modalsPin = document.querySelector('.add-pin_modal .modals_pin');
-    const addPinModal = document.querySelector('.add-pin_modal');
     const pinContainer = document.getElementById('pin-container');
-
-    addPinModal.style.opacity = '0';
-    addPinModal.style.pointerEvents = 'none';
+    const addPinModalWindow = document.getElementById('add-pin_modal');
+    addPinModalWindow.parentElement.removeChild(addPinModalWindow);
     pinContainer.style.overflow = 'visible';
-
-    document.querySelector('#upload_img_label').style.display = 'block';
-    modalsPin.style.display = 'none';
-    modalsPin.style.opacity = '0';
-
-    if (modalsPin.children[0].children[0]) modalsPin.children[0].removeChild(modalsPin.children[0].children[0]);
-    document.querySelector('#pin_description').value = '';
-    document.querySelector('#pin_hashtag').value = '';
-    document.querySelector('#pin_size').value = '';
 };
-
 
 
 //get users and pins data from mockApi and set data in one array
@@ -131,7 +117,7 @@ export const createPin = (pins) => {
         const pinImage =  new_pin.children[3].children[0];
 
         const pinMenuButton = new_pin.children[2].children[0].children[0];
-
+        
         const pinMenuArea = new_pin.children[2].children[2];
         const pinMenu = new_pin.children[2].children[2].children[0];
 

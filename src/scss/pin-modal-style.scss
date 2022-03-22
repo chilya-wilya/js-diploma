@@ -1,4 +1,4 @@
-.add-pin_modal {
+#add-pin_modal {
     width: 100%;
     height: 100%;
     position: absolute;
@@ -76,8 +76,8 @@
                     margin-bottom: 25px;
                 
                     .download_icon {
-                        width: 20px;
-                        height: 19px;
+                        width: 35px;
+                        height: 35px;
                     }
                 }
             }
@@ -118,10 +118,6 @@
     align-items: center;
     text-align: center;
     font-size: 12px;
-}
-
-#left_side .upload_pin .download_icon_container {
-    background-color: #767676;
 }
 
 //Right side o the modal window

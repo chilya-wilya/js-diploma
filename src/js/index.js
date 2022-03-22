@@ -53,7 +53,6 @@ const onStartApp = async () => {
         })
     });
 
-    
 
     // addition pins to boards
 
