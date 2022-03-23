@@ -103,7 +103,7 @@
     display: grid;
     grid-template-columns: repeat(auto-fill, 260px);
     overflow: visible;
-    // grid-auto-rows: 10px;
+    grid-auto-rows: 10px;
     justify-content: center;
     z-index: -1;
 
@@ -118,22 +118,19 @@
         margin: 15px 10px;
         position: relative;
         z-index: 1;
-        // border-radius: 16px;
-        // overflow: hidden;
-
         width: 235px;
-        height: 415px;
 
-        .pin_small {
-            grid-row-end: span 26;
-        }
+    }
 
-        .pin_medium {
-            grid-row-end: span 33;
-        }
+    .pin_small {
+        grid-row-end: span 37;
+    }
 
-        .pin_large {
-            grid-row-end: span 45;
-        }
+    .pin_medium {
+        grid-row-end: span 40;
+    }
+
+    .pin_large {
+        grid-row-end: span 48;
     }
 }

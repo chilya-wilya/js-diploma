@@ -41,12 +41,9 @@ export const createPin = (pins) => {
 
     pins.forEach(pin => {
         let new_pin = document.createElement('div');
-        // let pinImage =  pin.img;
         new_pin.style.opacity = 0;
-            
         new_pin.classList.add('pin');
         new_pin.classList.add(`${pin.pin_size}`);
-        // pinImage.classList.add('pin_max_width');
 
         new_pin.innerHTML = 
         `<div class="pin__hashtag">${pin.hashtag}</div>
@@ -164,14 +161,12 @@ export const createPin = (pins) => {
         pinImage.classList.add('pin_max_height');
 
 
-
         //append pin to dashboard
 
         new_pin.style.opacity = 1;
         pinContainer.append(new_pin);
     })
 };
-
 
 
 //save/load pins to/from local storage
@@ -185,12 +180,31 @@ export const getPinsFromStorage = () => {
 };
 
 
-
 //function to delete obj from array of pins
-
-export function arrayRemove(arr, value) { 
+export const arrayRemove = (arr, value) => { 
     return arr.filter(function(ele){ 
         return ele.id !== value.id; 
+    });
+}
+
+export const removePinsFromDashboard = (actualPins) => {
+    actualPins.forEach(pin => {
+
+        const pinReportButton = document.getElementById(`${pin.id}_pin-report-button`);
+
+        pinReportButton.addEventListener('click', () => {
+            const deletePinId = pinReportButton.id.split('_')[0];
+            const pinToDelete = document.getElementById(`pin__${pin.id}`).parentElement;
+            
+            for(let i = 0; i < actualPins.length; i++) {
+                if (actualPins[i].id === deletePinId) {
+                    actualPins = arrayRemove(actualPins, pin);
+                    pinToDelete.parentElement.removeChild(pinToDelete);
+                    saveToStorage(actualPins); 
+                    break;
+                }
+            }
+        })
     });
 }
 

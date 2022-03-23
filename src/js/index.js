@@ -1,14 +1,10 @@
-import prefetchImages from 'prefetch-image';
-import {fetchAllUser, fetchAllPins, createPin, saveToStorage, getPinsFromStorage, arrayRemove } from './utils.js';
+import {fetchAllUser, fetchAllPins, createPin, saveToStorage, getPinsFromStorage, arrayRemove, removePinsFromDashboard } from './utils.js';
 
 
 const onStartApp = async () => {
     const fetchedPins = await fetchAllPins();
     const users = await fetchAllUser();
-
     let pins = [].concat.apply([], fetchedPins);
-    let fetchedImages = await prefetchImages(pins.map(val => val.img)).then(result => result); 
-    let fetchedAvatars = await prefetchImages(users.map(val => val.avatar)).then(result => result);
 
     pins.forEach(pin => {
         users.forEach(user => {
@@ -30,28 +26,7 @@ const onStartApp = async () => {
         actualPins = pins;
     }
 
-
-
-    //removal pins from dashboard 
-
-    actualPins.forEach(pin => {
-
-        const pinReportButton = document.getElementById(`${pin.id}_pin-report-button`);
-
-        pinReportButton.addEventListener('click', () => {
-            const deletePinId = pinReportButton.id.split('_')[0];
-            const pinToDelete = document.getElementById(`pin__${pin.id}`).parentElement;
-            
-            for(let i = 0; i < pins.length; i++) {
-                if (actualPins[i].id === deletePinId) {
-                    actualPins = arrayRemove(actualPins, pin);
-                    pinToDelete.parentElement.removeChild(pinToDelete);
-                    saveToStorage(actualPins); 
-                    break;
-                }
-            }
-        })
-    });
+    removePinsFromDashboard(actualPins);
 
 
     // addition pins to boards
@@ -64,7 +39,7 @@ const onStartApp = async () => {
         pinSaveToBoardButton.addEventListener('click', () => {
 
             const BoardedPinId = pinSaveToBoardButton.id.split('_')[0];           
-            for(let i = 0; i < pins.length; i++) {
+            for(let i = 0; i < actualPins.length; i++) {
                 if (actualPins[i].id === BoardedPinId) {
 
                     actualPins[i].board = pinSelectedBoard.options[pinSelectedBoard.selectedIndex].value;

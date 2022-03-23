@@ -1,7 +1,7 @@
 #pin-menu-area {
     width: 350px;
-    height: 250px;
-    position: absolute;
+    height: 275px;
+    position: relative;
     top: 48%;
     left: 0%;
     transform: translate(-40%, -90%);
@@ -19,7 +19,7 @@
         background-color: white;
         border-radius: 16px;
         position: absolute;
-        top: 50%;
+        top: 43%;
         left: 50%;
         transform: translate(-50%, -50%);
         overflow: hidden;
@@ -105,7 +105,7 @@
     &__report-modal-area {
         width: 400px;
         height: 300px;
-        position: absolute;
+        position: relative;
         transform: translate(-40%, 51%);
         z-index: 110;
 
