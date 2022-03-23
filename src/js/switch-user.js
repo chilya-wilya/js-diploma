@@ -1,6 +1,4 @@
 //switch user modal js
-
-
 const switchUserButton = document.getElementById('switch-user-button');
 const header = document.getElementById('header');
 
@@ -60,17 +58,9 @@ switchUserButton.addEventListener('click', () => {
     switchUserModal.style.pointerEvents = 'all';
 });
 
-
-function closeSwitchUserWindow() {
-    const switchUserArea = document.getElementById('switch-user-area');
-    const switchUserModal = document.getElementById('switch-user-window');
-    switchUserArea.parentElement.removeChild(switchUserArea);
-}
-
-
 document.addEventListener('mouseover', (e) => {
     const switchUserArea = document.getElementById('switch-user-area');
     if (e.target === switchUserArea) {
-        closeSwitchUserWindow()
+        switchUserArea.parentElement.removeChild(switchUserArea);
     }
 })

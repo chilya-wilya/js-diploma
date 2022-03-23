@@ -1,8 +1,6 @@
 import {resetModal} from './utils';
 
 //pin modal js
-
-
 const pinContainer = document.getElementById('pin-container');
 const addPinButton = document.getElementById('add-pin-modal-button');
 
@@ -58,7 +56,6 @@ addPinButton.addEventListener('click', () => {
     pinContainer.append(addPinModalWindow);
 
     // const addPinModal = document.getElementById('add-pin_modal');
-
     addPinModalWindow.style.opacity = '1';
     addPinModalWindow.style.pointerEvents = 'all';
     pinContainer.style.overflow = 'hidden';
@@ -69,14 +66,3 @@ addPinButton.addEventListener('click', () => {
         }
     });    
 });
-
-
-
-// addPinModalWindow.addEventListener('click', event => {
-//     if (event.target === addPinModalWindow) {
-//         resetModal();
-//     }
-// });
-
-
-

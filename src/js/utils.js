@@ -1,5 +1,6 @@
-// reset add new pin modal window
+import { PIN, PINS } from "./constants";
 
+// reset add new pin modal window
 export function resetModal() {
     const pinContainer = document.getElementById('pin-container');
     const addPinModalWindow = document.getElementById('add-pin_modal');
@@ -7,9 +8,7 @@ export function resetModal() {
     pinContainer.style.overflow = 'visible';
 };
 
-
 //get users and pins data from mockApi and set data in one array
-
 export const fetchPinsByUser = async (userId) => {
     let pinsData  = await fetch(`https://6231aaa405f5f4d40d8045dc.mockapi.io/users/${userId}/pins`)
     return await pinsData.json();
@@ -29,20 +28,16 @@ export const fetchAllPins = async () => {
 };
 
 
-
 //display pins with modal menu on dashboard
-
 export const createPin = (pins) => {
 
     let pinContainer = document.getElementById('pin-container');
-
     pinContainer.innerHTML = '';
     
-
     pins.forEach(pin => {
         let new_pin = document.createElement('div');
         new_pin.style.opacity = 0;
-        new_pin.classList.add('pin');
+        new_pin.classList.add(PIN);
         new_pin.classList.add(`${pin.pin_size}`);
 
         new_pin.innerHTML = 
@@ -108,21 +103,14 @@ export const createPin = (pins) => {
             <img src="${pin.img}" alt="pin-image">
         </div>`;
 
-        
         //create pin modal menu window
-
         const pinImage =  new_pin.children[3].children[0];
-
         const pinMenuButton = new_pin.children[2].children[0].children[0];
-        
         const pinMenuArea = new_pin.children[2].children[2];
         const pinMenu = new_pin.children[2].children[2].children[0];
-
         const pinReportButton = new_pin.children[2].children[2].children[0].children[1].children[0];
-
         const pinReportArea = new_pin.children[2].children[2].children[1];
         const pinReportMenu = new_pin.children[2].children[2].children[1].children[0];
-
         const pinModalArea = new_pin.children[2];
 
         pinMenuButton.addEventListener('click', () => {
@@ -160,9 +148,7 @@ export const createPin = (pins) => {
 
         pinImage.classList.add('pin_max_height');
 
-
         //append pin to dashboard
-
         new_pin.style.opacity = 1;
         pinContainer.append(new_pin);
     })
@@ -170,29 +156,28 @@ export const createPin = (pins) => {
 
 
 //save/load pins to/from local storage
-
 export const saveToStorage = (pins) => {
-    localStorage.setItem("pins", JSON.stringify(pins));
+    localStorage.setItem(PINS, JSON.stringify(pins));
 };
 
 export const getPinsFromStorage = () => {
-    return JSON.parse(localStorage.getItem("pins"));
+    return JSON.parse(localStorage.getItem(PINS));
 };
 
 
 //function to delete obj from array of pins
 export const arrayRemove = (arr, value) => { 
-    return arr.filter(function(ele){ 
-        return ele.id !== value.id; 
-    });
+    return arr.filter(el => el.id !== value.id);
 }
 
+//remove pins from dashboard
 export const removePinsFromDashboard = (actualPins) => {
     actualPins.forEach(pin => {
 
         const pinReportButton = document.getElementById(`${pin.id}_pin-report-button`);
 
         pinReportButton.addEventListener('click', () => {
+            console.log('test')
             const deletePinId = pinReportButton.id.split('_')[0];
             const pinToDelete = document.getElementById(`pin__${pin.id}`).parentElement;
             
@@ -206,7 +191,44 @@ export const removePinsFromDashboard = (actualPins) => {
             }
         })
     });
-}
+};
 
+// add pins to boards and board selection
+export const addPinsToBoards = (actualPins) => {
+    actualPins.forEach(pin => {
+
+        const pinSelectedBoard = document.getElementById(`${pin.id}_pin-select-board`);
+        const pinSaveToBoardButton = document.getElementById(`${pin.id}_save-pin-on-board`);
+
+        pinSaveToBoardButton.addEventListener('click', () => {
+
+            const BoardedPinId = pinSaveToBoardButton.id.split('_')[0];           
+            for(let i = 0; i < actualPins.length; i++) {
+                if (actualPins[i].id === BoardedPinId) {
+                    actualPins[i].board = pinSelectedBoard.options[pinSelectedBoard.selectedIndex].value;
+                    saveToStorage(actualPins);
+                    break;
+                }
+            }
+        })
+    });
+
+    const boardSelector = document.getElementById(`select-board`);
+    boardSelector.addEventListener('click', () => {
+        const selectedBoard = boardSelector.options[boardSelector.selectedIndex].value;
+        createPin(selectedBoard === 'default' ? actualPins : actualPins.filter(pin => pin.board === selectedBoard))
+    });
+};
+
+
+export const filterPinsByHashtag = (actualPins) => {
+    const hashtagSearch = document.getElementById(`pin-search`);
+    hashtagSearch.addEventListener('change', () => {
+        const rightHashtag = hashtagSearch.value;
+        createPin(rightHashtag === '' ? 
+        actualPins : 
+        actualPins.filter(pin => pin.hashtag === rightHashtag || pin.hashtag === '#' + rightHashtag));
+    });
+}
 
 
